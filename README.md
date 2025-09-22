@@ -30,6 +30,14 @@ API RESTful para gerenciamento de clientes com banco em memória
 
 [▶️ Ver Projeto](https://github.com/EmmanoelMonteiro/crm_api_clientes)
 
+### 📊 Basic Load Balancer Docker
+[![Badge Status](https://img.shields.io/badge/Status-Completo-brightgreen)]()
+[![Tecnologias](https://img.shields.io/badge/Tech-Docker,Node.js,H2,RestAPI-orange)]()
+
+Balanceamento de carga simples usando Docker, Nginx e Node.js. 
+
+[▶️ Ver Projeto](https://github.com/EmmanoelMonteiro/basic-load-balancer-docker)
+
 ## 🧩 Como Contribuir
 
 1. Faça um fork do projeto
