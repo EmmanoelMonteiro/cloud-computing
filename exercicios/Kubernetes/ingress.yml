@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+  annotations:
+    # A anotação abaixo é específica para o Nginx Ingress Controller
+    # e garante que o tráfego seja roteado corretamente
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: localhost # Usamos localhost porque estamos no Docker Desktop
+    http:
+      paths:
+      - path: /api(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-app-service # Aponta para o seu serviço de backend
+            port:
+              number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service # Aponta para o seu serviço de front-end
+            port:
+              number: 80

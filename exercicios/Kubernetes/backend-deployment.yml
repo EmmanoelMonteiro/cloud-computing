@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app-deployment
+  labels:
+    app: backend-app
+spec:
+  replicas: 0 # O Kubernetes garantirá que 3 réplicas estejam rodando
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+      - name: backend-app
+        image: backend-app-deployment:1.0 # Sua imagem de backend
+        imagePullPolicy: Never # MUITO IMPORTANTE!
+        ports:
+        - containerPort: 3000 # A porta que sua aplicação escuta
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP

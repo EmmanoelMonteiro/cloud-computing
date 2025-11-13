@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend
+spec:
+  replicas: 1 # Você pode começar com 1 réplica para o front-end
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: frontend-app-deployment:1.0 # Sua imagem do front-end
+        imagePullPolicy: Never # MUITO IMPORTANTE!
+        ports:
+        - containerPort: 3000 # A porta em que seu front-end está rodando
